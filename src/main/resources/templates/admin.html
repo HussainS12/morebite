@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MoreBite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-light fixed-top">
+		  <div class="container-fluid">
+	    		<a class="navbar-brand" href="/">
+	      		<img src="/images/logo.jpeg" alt="logo" width="60" height="54" class="d-inline-block">
+	     		 MoreBite
+	    		</a>
+	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    		<span class="navbar-toggler-icon"></span>
+		  		</button>
+	  	</div>
+	  		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		    	<div class="navbar-nav">
+		      		<button type="submit" onClick="logout()" class="btn btn-primary">Logout</button>
+		    	</div>
+		  	</div>
+	</nav>
+	<div class="container">
+		<h3 class="text-center">Admin Panel</h3>
+	</div>
+	<div class= "container mt-5">
+		<div class="row justify-content-center" > 
+		 	<div class="card col-lg-3" style="width: 20rem;">
+	  				<img class="card-img-top" src="/images/products.png" width="100px" height="250px" alt="product page icon">
+	  				<div class="card-body">
+	    				<h6 class="card-title">Products</h6>
+	    				<p class="card-text"> Manage Products From Here</p>
+	    				<a class="btn btn-primary" href="/admin/product">Go to Products</a>
+	  				</div>
+				</div>
+				<div class="col-lg-2"></div>
+			<div class="card col-lg-3 " style="width: 20rem;">
+	  				<img class="card-img-top" src="/images/orders.png" width="100px" height="250px" alt="order page icon">
+	  				<div class="card-body">
+	    				<h6 class="card-title">Orders</h6>
+	    				<p class="card-text"> Manage Orders From Here</p>
+	    				<a class="btn btn-primary" href="/admin/order">Go to Orders</a>
+	  				</div>
+				</div>
+	 	</div>
+	</div>
+	<!-- FOOTER  -->
+	 <div class="container">
+  		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+	    	<p class="col-md-4 mb-0 text-muted">© 2024 MoreBite </p>
+	    	<p class="nav col-md-4 justify-content-end">
+	     		 <div class="d-flex flex-column">
+		      		<p><img src="images/location-dot-solid.svg" width="24px" height="24px"></img> MoreBite Cookies, </br>Al Asimah Governate,</br>Block 4, Street 27, Building No. 5,</br>Kuwait City, Kuwait</p>
+		      		<p><img src="images/envelope-solid.svg" width="24px" height="24px"></img><i class="fa-solid fa-envelope"></i> info@morebite.com</p>
+		      		<p><img src="images/phone-solid.svg" width="24px" height="24px"></img><i class="fa-solid fa-phone"></i> 22345678</p>
+	      		</div>
+	    	</p>
+  		</footer>
+	</div>
+	<script src="/js/login.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

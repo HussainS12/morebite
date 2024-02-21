@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MoreBite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-light fixed-top">
+		  <div class="container-fluid">
+	    		<a class="navbar-brand" href="#">
+	      		<img src="/images/logo.jpeg" alt="logo" width="60" height="54" class="d-inline-block">
+	     		 MoreBite
+	    		</a>
+	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    		<span class="navbar-toggler-icon"></span>
+		  		</button>
+	  	</div>	
+	  		<div class="collapse navbar-collapse mr-5" id="navbarNavAltMarkup">
+		    	<div class="navbar-nav">
+		      		<a class="nav-item nav-link active" href="/">Home</a>
+		      		<a class="nav-item nav-link" href="#aboutUs">About</a>
+		      		<a class="nav-item nav-link" href="#products">Products</a>
+		      		<a class="nav-item nav-link position-relative" href="/checkout"><img src="images/cart-shopping-solid.svg" width="24px" height="24px"></img> Cart <span id="addToCartIcon" class="d-none position-absolute top-0 start-100 translate-middle p-2 bg-primary border border-light rounded-circle"></span></a>
+		    	</div>
+		  	</div>
+	</nav>
+	<!-- Hero Banner Section -->
+	<div class="container my-auto">
+		<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+	      <div class="col-10 col-sm-8 col-lg-6">
+	        <img src="/images/banner.png" class="d-block mx-lg-auto img-fluid" alt="Banner Image" width="700" height="	500" loading="lazy">
+	      </div>
+	      <div class="col-lg-6">
+	        <h1 class="display-5 fw-bold lh-1 mb-3">MoreBite - Where Every Bite is a New Delight!</h1>
+	        <p class="lead">Welcome to MoreBite, where every cookie is a masterpiece crafted with love. Born from a passion for baking, we blend tradition with innovation to create flavors that linger. Dive into our world, where each bite promises a unique journey of delight.</p>
+	      </div>
+	    </div>
+	 </div>
+	 
+	 <div class="container" id="aboutUs">
+	 	<div class="row  align-items-center g-5 py-5">
+	      <div class="col-10 col-sm-8 col-lg-6">
+	        <img src="/images/banner.png" class="d-block mx-lg-auto img-fluid" alt="Banner Image" width="700" height="	500" loading="lazy">
+	      </div>
+	      <div class="col-lg-6">
+	        <h3 class="display-5 fw-bold lh-1 mb-3">About Us</h3>
+	        <p class="lead">Welcome to MoreBite, the ultimate haven for cookie enthusiasts! Founded with a passion for baking and a dream to enchant taste buds, MoreBite emerged from a simple idea: to create not just cookies, but unforgettable moments of joy in every bite. Our journey began in the cozy corners of a small kitchen, where each recipe was crafted with love, precision, and a dash of creativity. Today, MoreBite stands as a testament to the magic that happens when traditional baking meets innovation. We are committed to using only the finest ingredients, ensuring every cookie we serve is fresh, flavorful, and irresistibly delicious. At MoreBite, we believe in the power of cookies to bring people together, making life a little sweeter one bite at a time. Join us in celebrating the simple pleasures of life, and discover why every visit to MoreBite leaves you craving for more.</p>
+	      </div>
+	    </div>
+	 </div>
+	 
+	 <div class="container" id="products">
+	 	<h3 class="text-center">Explore our delicious cookies</h3>
+	 	<div class="row justify-content-around" > 
+		 	<div th:each="product: ${products}" class="card col-lg-3 " style="width: 18rem;">
+	  				<img class="card-img-top" th:src="@{'/images/' + ${product.id} + '/' + ${product.image}}" width="60px" height="250px" alt="product image">
+	  				<div class="card-body">
+	    				<h6 class="card-title" th:text="${product.name}"></h6>
+	    				<p class="card-text" th:text="${product.description}"></p>
+	    				<p th:text="${product.price} + ' KWD ' + 'per 6 pcs'"></p>
+	    				<button class="btn btn-primary" id="addItemToCart" th:onClick="'addProduct(' + ${product.id} + ')'">Add to cart</button>
+	  				</div>
+				</div>
+	 	</div>
+			<div class="col-lg-1"></div>
+	 	</div>
+	 <!-- FOOTER  -->
+	 <div class="container">
+  		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+	    	<p class="col-md-4 mb-0 text-muted">© 2024 MoreBite </p>
+	    	<p class="nav col-md-4 justify-content-end">
+	     		 <div class="d-flex flex-column">
+		      		<p><img src="images/location-dot-solid.svg" width="24px" height="24px"></img> MoreBite Cookies, </br>Al Asimah Governate,</br>Block 4, Street 27, Building No. 5,</br>Kuwait City, Kuwait</p>
+		      		<p><img src="images/envelope-solid.svg" width="24px" height="24px"></img><i class="fa-solid fa-envelope"></i> info@morebite.com</p>
+		      		<p><img src="images/phone-solid.svg" width="24px" height="24px"></img><i class="fa-solid fa-phone"></i> 22345678</p>
+		      		<a href="/login">Login</a>
+	      		</div>
+	    	</p>
+  		</footer>
+	</div>
+	
+	<script src="/js/home.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

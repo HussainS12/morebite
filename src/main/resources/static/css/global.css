@@ -1,0 +1,36 @@
+*, body{
+    font-family: "Poppins", sans-serif !important;
+}
+
+.btn-primary{
+	background-color: #A66F2C !important;
+	border: 0;
+}
+
+.btn-secondary{
+	color: #A66F2C !important;
+	background-color: #fff;
+	border: 0;
+}
+
+.btn-secondary:hover{
+	color: #A66F2C !important;
+	background-color: #fff;
+	border: 0;
+}
+
+.bg-primary{
+	background-color: #A66F2C !important;
+}
+
+.text-primary{
+	color: #A66F2C !important;
+}
+
+p{
+	font-size:1rem !important;
+}
+
+.mt-5{
+	margin-top:8rem !important;
+}

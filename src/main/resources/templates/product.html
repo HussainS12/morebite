@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>MoreBite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-light fixed-top">
+		  <div class="container-fluid">
+	    		<a class="navbar-brand" href="/admin">
+	      		<img src="/images/logo.jpeg" alt="logo" width="60" height="54" class="d-inline-block">
+	     		 MoreBite
+	    		</a>
+	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    		<span class="navbar-toggler-icon"></span>
+		  		</button>
+	  	</div>
+	  		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		    	<div class="navbar-nav">
+		      		<button type="submit" onClick="logout()" class="btn btn-primary">Logout</button>
+		    	</div>
+		  	</div>
+	</nav>
+	
+	<div class="container mt-5">
+	<h3 class="text-center">Products Page</h3>
+	<div class="d-flex">
+		<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Add Product</button>
+	</div>
+	<div>
+	<table class="table">
+  			<thead class="thead-dark">
+		    	<tr>
+		      		<th scope="col">Product Id</th>
+		      		<th scope="col">Image</th>
+		      		<th scope="col">Product Name</th>
+		      		<th scope="col">Description</th>
+		      		<th scope="col">Quantity</th>
+		      		<th scope="col">Price</th>
+		      		<th scope="col">Action</th>
+		    	</tr>
+  			</thead>
+  			<tbody>
+    			<tr th:each="product: ${products}">
+    				<td th:text="${product.id}"></td>
+    				<td><img th:src="@{'/images/' + ${product.id} + '/' + ${product.image}}" width="60px" height="50px"/></td>
+    				<td th:text="${product.name}"></td>
+    				<td th:text="${product.description}"></td>
+    				<td th:text="${product.quantity}"></td>
+    				<td th:text="${product.price} + ' ' + KWD"></td>
+    				<td>
+    				<div class="d-flex">
+    				<a class="btn btn-danger" th:href="@{/admin/product/delete(id=${product.id})}" onClick="return confirm('Are you sure?')">Delete</a>
+    				</div>
+    				</td>
+    			</tr>
+  			</tbody>
+</table>
+	</div>
+	</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" enctype="multipart/form-data" action="product" th:object="${productDto}">
+        	<div class="mb-3">
+    			<label for="productName" class="form-label">Product Name</label>
+    			<input type="text" class="form-control"  aria-describedby="productNameHelp" required="required" th:field="${productDto.name}">
+    			<!-- <p th:if="${fields.hasError('name')}" th:errorclass="text-danger" th:errors="${productDto.name}"></p> -->
+  			</div>
+  			<div class="mb-3">
+    			<label for="description" class="form-label">Description</label>
+    			<input type="text" class="form-control"  aria-describedby="descriptionHelp" required="required" th:field="${productDto.description}">
+  			</div>
+  			<div class="mb-3">
+    			<label for="quantity" class="form-label">Stock Quantity</label>
+    			<input type="text" class="form-control" aria-describedby="quantityHelp" required="required" th:field="${productDto.quantity}">
+  			</div>
+  			<div class="mb-3">
+    			<label for="price" class="form-label">Price per 6pcs</label>
+    			<input type="text" class="form-control" aria-describedby="priceHelp" required="required" th:field="${productDto.price}">
+  			</div>
+  			<div class="mb-3">
+  				<input type="hidden">
+    			<label for="productImage" class="form-label">Image</label>
+    			<input type="file" class="form-control"  aria-describedby="pImageHelp" name="pImage" accept="image/png, image/jpg, image/jpeg" required="required">
+  			</div>
+  			<div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="addProduct">Add product</button>
+      		</div>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FOOTER  -->
+	 <div class="container">
+  		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+	    	<p class="col-md-4 mb-0 text-muted">© 2024 MoreBite </p>
+	    	<p class="nav col-md-4 justify-content-end">
+	     		 <div class="d-flex flex-column">
+		      		<p><img src="/images/location-dot-solid.svg" width="24px" height="24px"></img> MoreBite Cookies, </br>Al Asimah Governate,</br>Block 4, Street 27, Building No. 5,</br>Kuwait City, Kuwait</p>
+		      		<p><img src="/images/envelope-solid.svg" width="24px" height="24px"></img><i class="fa-solid fa-envelope"></i> info@morebite.com</p>
+		      		<p><img src="/images/phone-solid.svg" width="24px" height="24px"></img><i class="fa-solid fa-phone"></i> 22345678</p>
+	      		</div>
+	    	</p>
+  		</footer>
+	</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
